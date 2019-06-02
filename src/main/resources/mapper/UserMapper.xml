@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.liu.springbootvue.mapper.UserMapper">
+
+    <!--查询所有-->
+    <select id="findAll">
+        select * from tb_user
+    </select>
+
+    <!--根据id查询-->
+    <select id="findById" resultType="com.liu.springbootvue.entity.User" parameterType="Long">
+        select * from tb_user where id = #{id}
+    </select>
+
+    <!--创建-->
+    <insert id="create" parameterType="com.liu.springbootvue.entity.User">
+        insert into tb_user(username,password) values (#{username},#{password})
+    </insert>
+
+    <!--删除-->
+    <delete id="delete" parameterType="Long">
+        delete from tb_user where id=#{id}
+    </delete>
+
+    <!--更新-->
+    <update id="update" parameterType="com.liu.springbootvue.entity.User">
+        update tb_user set where 1=1
+        <if test="username != null">
+            username = #{username}
+        </if>
+        <if test="password != null">
+            password = #{password}
+        </if>
+        where id=#{id}
+    </update>
+
+    <!--根据用户名查询-->
+    <select id="findByName" parameterType="String" resultType="com.liu.springbootvue.entity.User">
+        select * from tb_user where username = #{username}
+    </select>
+
+</mapper>
